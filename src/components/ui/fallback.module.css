@@ -1,0 +1,102 @@
+.stage {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: radial-gradient(
+      ellipse 70% 60% at 50% 46%,
+      rgba(58, 32, 120, 0.42) 0%,
+      rgba(18, 12, 42, 0.28) 38%,
+      rgba(3, 4, 11, 0) 72%
+    ),
+    linear-gradient(180deg, #01020a 0%, #070a1c 55%, #03040c 100%);
+}
+
+.halo {
+  position: absolute;
+  width: min(72vmin, 680px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 185, 110, 0.16) 0%,
+    rgba(147, 108, 255, 0.12) 34%,
+    rgba(74, 82, 220, 0.05) 56%,
+    rgba(4, 5, 14, 0) 72%
+  );
+  filter: blur(6px);
+  animation: haloBreathe 16s ease-in-out infinite;
+}
+
+.flower {
+  position: relative;
+  width: min(88vmin, 760px);
+  height: auto;
+  overflow: visible;
+  animation: flowerBreathe 18s ease-in-out infinite;
+  transform-origin: 50% 54%;
+  filter: drop-shadow(0 0 44px rgba(126, 96, 255, 0.28));
+}
+
+.petals {
+  transform-origin: 50% 54%;
+  animation: petalSway 26s ease-in-out infinite;
+}
+
+.stamens {
+  opacity: 0.9;
+}
+
+.note {
+  position: absolute;
+  left: 50%;
+  bottom: max(26px, calc(env(safe-area-inset-bottom) + 16px));
+  transform: translateX(-50%);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: rgba(203, 209, 255, 0.35);
+}
+
+@keyframes haloBreathe {
+  0%,
+  100% {
+    opacity: 0.75;
+    transform: scale(0.97);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes flowerBreathe {
+  0%,
+  100% {
+    transform: scale(1) translateY(0);
+  }
+  50% {
+    transform: scale(1.025) translateY(-6px);
+  }
+}
+
+@keyframes petalSway {
+  0%,
+  100% {
+    transform: rotate(-0.8deg);
+  }
+  50% {
+    transform: rotate(0.9deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .halo,
+  .flower,
+  .petals {
+    animation: none;
+  }
+}

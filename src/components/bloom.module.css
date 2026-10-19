@@ -1,0 +1,36 @@
+.root {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  background:
+    radial-gradient(
+      ellipse 66% 56% at 50% 44%,
+      rgba(48, 30, 108, 0.32) 0%,
+      rgba(16, 12, 40, 0.18) 40%,
+      rgba(3, 4, 11, 0) 74%
+    ),
+    linear-gradient(180deg, #01020a 0%, #060817 58%, #03040b 100%);
+}
+
+.canvas {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 1.6s ease;
+}
+
+.canvasReady {
+  opacity: 1;
+}
+
+.canvas canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+  cursor: grab;
+  outline: none;
+}
+
+.canvas canvas:active {
+  cursor: grabbing;
+}

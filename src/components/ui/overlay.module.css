@@ -1,0 +1,240 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  pointer-events: none;
+  color: var(--ink);
+}
+
+.overlay::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(3, 4, 11, 0) 0%,
+    rgba(3, 4, 11, 0) 60%,
+    rgba(3, 4, 11, 0.5) 90%,
+    rgba(3, 4, 11, 0.78) 100%
+  );
+  pointer-events: none;
+}
+
+.soundButton {
+  position: absolute;
+  top: clamp(20px, 3.4vh, 38px);
+  right: clamp(18px, 3vw, 44px);
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid rgba(232, 225, 255, 0.14);
+  background: rgba(9, 10, 20, 0.32);
+  color: rgba(236, 238, 255, 0.6);
+  cursor: pointer;
+  pointer-events: auto;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition:
+    border-color 500ms ease,
+    background 500ms ease,
+    color 500ms ease,
+    box-shadow 500ms ease;
+}
+
+.soundButton:hover {
+  border-color: rgba(244, 208, 160, 0.55);
+  background: rgba(22, 19, 40, 0.55);
+  color: #fff6e8;
+  box-shadow: 0 0 30px rgba(244, 190, 120, 0.16);
+}
+
+.soundButton svg {
+  width: 15px;
+  height: 15px;
+}
+
+.soundOn {
+  color: rgba(247, 220, 178, 0.92);
+}
+
+.soundButton:focus-visible {
+  outline: 1px solid rgba(244, 208, 160, 0.8);
+  outline-offset: 5px;
+}
+
+.controls {
+  position: absolute;
+  left: clamp(18px, 3vw, 46px);
+  right: clamp(18px, 3vw, 46px);
+  bottom: clamp(20px, 3.2vh, 38px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.bloomButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 20px;
+  border-radius: 999px;
+  border: 1px solid rgba(232, 225, 255, 0.16);
+  background: rgba(9, 10, 20, 0.34);
+  color: rgba(236, 238, 255, 0.84);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 10px;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  cursor: pointer;
+  pointer-events: auto;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition:
+    border-color 500ms ease,
+    background 500ms ease,
+    color 500ms ease,
+    box-shadow 500ms ease,
+    transform 500ms ease;
+}
+
+.bloomButton:hover {
+  border-color: rgba(244, 208, 160, 0.55);
+  background: rgba(22, 19, 40, 0.55);
+  color: #fff6e8;
+  box-shadow: 0 0 34px rgba(244, 190, 120, 0.18);
+}
+
+.bloomButton:active {
+  transform: scale(0.975);
+}
+
+.bloomButton svg {
+  width: 12px;
+  height: 12px;
+  opacity: 0.7;
+}
+
+.bloomButton:hover svg {
+  opacity: 1;
+}
+
+.modes {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.mode {
+  position: relative;
+  padding: 6px 2px 8px;
+  border: none;
+  background: none;
+  color: rgba(201, 207, 255, 0.4);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-weight: 300;
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  cursor: pointer;
+  pointer-events: auto;
+  transition: color 600ms ease;
+}
+
+.mode::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: rgba(244, 208, 160, 0.85);
+  opacity: 0;
+  transform: translate(-50%, 4px);
+  transition:
+    opacity 600ms ease,
+    transform 600ms ease;
+}
+
+.mode:hover {
+  color: rgba(232, 235, 255, 0.8);
+}
+
+.modeActive {
+  color: rgba(247, 220, 178, 0.95);
+}
+
+.modeActive::after {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+.separator {
+  width: 12px;
+  height: 1px;
+  background: rgba(203, 209, 255, 0.22);
+}
+
+.bloomButton:focus-visible,
+.mode:focus-visible {
+  outline: 1px solid rgba(244, 208, 160, 0.8);
+  outline-offset: 5px;
+}
+
+@media (max-width: 720px) {
+  .soundButton {
+    top: max(14px, calc(env(safe-area-inset-top) + 8px));
+    right: 16px;
+    width: 40px;
+    height: 40px;
+  }
+
+  .controls {
+    bottom: max(18px, calc(env(safe-area-inset-bottom) + 10px));
+    left: 18px;
+    right: 18px;
+    gap: 12px;
+  }
+
+  .bloomButton {
+    min-height: 44px;
+    padding: 12px 18px;
+    font-size: 9.5px;
+    letter-spacing: 0.2em;
+  }
+
+  .modes {
+    gap: 10px;
+  }
+
+  .mode {
+    min-height: 44px;
+    padding: 10px 2px;
+    font-size: 9.5px;
+    letter-spacing: 0.22em;
+  }
+}
+
+@media (max-width: 380px) {
+  .bloomButton span {
+    display: none;
+  }
+
+  .bloomButton {
+    gap: 0;
+    padding: 13px;
+  }
+
+  .bloomButton svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .modes {
+    gap: 12px;
+  }
+}
